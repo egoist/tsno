@@ -15,6 +15,8 @@
 
 ```bash
 npm i tsno -D
+# Or install globally
+npm i tsno -g
 ```
 
 ## Usage
