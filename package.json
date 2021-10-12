@@ -1,33 +1,37 @@
 {
-  "name": "my-ts-lib",
+  "name": "tsno",
   "version": "0.0.0",
   "description": "My awesome typescript library",
   "publishConfig": {
     "access": "public"
   },
   "files": [
-    "dist"
+    "dist",
+    "/cli.js"
   ],
   "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "exports": {
-    "require": "./dist/index.js",
-    "import": "./dist/index.mjs"
-  },
-  "types": "./dist/index.d.ts",
+  "bin": "./cli.js",
   "scripts": {
-    "build": "tsup src/index.ts --format cjs,esm --dts-resolve",
-    "test": "jest",
+    "build": "tsup src/index.ts",
+    "test": "tsup src/index.ts && jest",
     "prepublishOnly": "npm run build"
   },
   "license": "MIT",
   "devDependencies": {
     "@egoist/prettier-config": "^0.1.0",
     "@sucrase/jest-plugin": "^2.0.0",
+    "@types/cross-spawn": "^6.0.2",
     "@types/jest": "^26.0.20",
+    "execa": "^5.1.1",
     "jest": "^26.6.3",
+    "minimost": "^1.2.0",
     "prettier": "^2.2.1",
-    "tsup": "^4.8.4",
+    "tsup": "^5.4.0",
     "typescript": "^4.2.3"
+  },
+  "dependencies": {
+    "bundle-require": "^1.1.1",
+    "cross-spawn": "^7.0.3",
+    "esbuild": "^0.13.4"
   }
 }
