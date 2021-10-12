@@ -9,7 +9,7 @@
 ## Features
 
 - TypeScript support
-- Deno-style URL import, try `tsno https://egoist.sh/tsno.ts`
+- Deno-style URL import, try `npx tsno https://egoist.sh/tsno.ts`
 
 ## Install
 
