@@ -6,6 +6,11 @@
 
 [![npm version](https://badgen.net/npm/v/tsno)](https://npm.im/tsno)
 
+## Features
+
+- TypeScript support
+- Deno-style URL import, try `tsno https://egoist.sh/tsno.ts`
+
 ## Install
 
 ```bash
