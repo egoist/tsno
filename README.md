@@ -22,6 +22,16 @@ Supported files: `.js` `.jsx` `.ts` `.tsx` `.cjs` `.mjs` `.json`
 
 All `node` flags are forwarded, i.e. `tsno script.ts --experimental-wasm-modules` works as expected.
 
+### Importing from URL
+
+tsno supports deno-style http import, try:
+
+```bash
+tsno https://egoist.sh/tsno.ts
+```
+
+You can also use `import` or `require` to load modules from an URL.
+
 ## License
 
 MIT &copy; [EGOIST](https://github.com/sponsors/egoist)

@@ -1,5 +1,6 @@
 import { bundleRequire } from 'bundle-require'
 import { spawn } from 'cross-spawn'
+import { httpPlugin } from './plugins/http-plugin'
 
 class PrettyError extends Error {}
 
@@ -29,6 +30,7 @@ export async function startCLI() {
 
     await bundleRequire({
       filepath: cli.file,
+      esbuildPlugins: [httpPlugin()],
       require: (outfile) =>
         new Promise((resolve) => {
           const cmd = spawn('node', [outfile, ...cli.args], {
