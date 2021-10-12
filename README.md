@@ -8,6 +8,7 @@
 
 ## Features
 
+- Super duper fast
 - TypeScript support
 - Deno-style URL import, try `npx tsno https://egoist.sh/tsno.ts`
 
