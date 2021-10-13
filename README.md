@@ -28,7 +28,7 @@ tsno script.ts
 
 Supported files: `.js` `.jsx` `.ts` `.tsx` `.cjs` `.mjs` `.json`
 
-All `node` flags are forwarded, i.e. `tsno script.ts --experimental-wasm-modules` works as expected.
+All `node` flags are forwarded, i.e. `tsno --experimental-wasm-modules script.ts` works as expected.
 
 ### Importing from URL
 
