@@ -22,7 +22,7 @@ export async function startCLI() {
   try {
     const cli = parseArgs(process.argv.slice(2))
 
-    if (cli.args.includes('--help') || cli.args.includes('-h')) {
+    if (cli.showNodeHelp) {
       spawn('node', ['--help'], { stdio: 'inherit' })
       return
     }
