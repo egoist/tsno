@@ -4,11 +4,14 @@ import { spawn } from 'cross-spawn'
 import { httpPlugin } from './plugins/http-plugin'
 
 const JS_EXT_RE = /\.(js|jsx|ts|tsx|mjs|cjs)$/
+const URL_RE = /^https?:\/\//
 
 class PrettyError extends Error {}
 
 const parseArgs = (args: string[]) => {
-  const scriptIndex = args.findIndex((arg) => JS_EXT_RE.test(arg))
+  const scriptIndex = args.findIndex(
+    (arg) => JS_EXT_RE.test(arg) || URL_RE.test(arg),
+  )
   const script = scriptIndex === -1 ? undefined : args[scriptIndex]
   const showNodeHelp = args.includes('--help') || args.includes('-h')
   const nodeArgs = args.slice(0, scriptIndex)
