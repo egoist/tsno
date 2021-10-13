@@ -58,10 +58,16 @@ export const httpPlugin = (): Plugin => {
       // would probably need to be more complex.
       build.onLoad({ filter: /.*/, namespace: 'http-url' }, async (args) => {
         console.log(`Fetching`, args.path)
-        const res = await axios.default({ url: args.path })
+        const res = await axios.default({
+          url: args.path,
+          // Disable JSON parsing so we can get the raw response body.
+          transformResponse: [],
+        })
         const ext = path.extname(args.path)
         const loader =
-          ext === '.mjs' || ext === '.cjs'
+          ext === '.json'
+            ? 'json'
+            : ext === '.mjs' || ext === '.cjs'
             ? 'js'
             : /\.[jt]sx?$/.test(ext)
             ? ext.slice(1)
