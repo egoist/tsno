@@ -50,8 +50,8 @@ export async function startCLI() {
             [
               '-r',
               path.join(__dirname, 'source-map-support-inject.js'),
-              ...cli.args,
               outfile,
+              ...cli.args,
             ],
             {
               stdio: 'inherit',
