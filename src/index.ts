@@ -30,6 +30,14 @@ export async function startCLI() {
 
     await bundleRequire({
       filepath: cli.file,
+      getOutputFile(filepath) {
+        filepath = filepath.replace(/\.[a-z]+$/, '.tsno.cjs')
+        // Prevent esbuild from emitting nested folders when the input is an URL
+        if (/^https?:\/\//.test(filepath)) {
+          filepath = filepath.replace(/\//g, '--')
+        }
+        return filepath
+      },
       esbuildPlugins: [httpPlugin()],
       require: (outfile) =>
         new Promise((resolve) => {
