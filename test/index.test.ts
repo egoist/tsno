@@ -12,3 +12,25 @@ test('simple', async () => {
   ])
   expect(res.stdout).toContain('foo')
 })
+
+test('script args', async () => {
+  const res = await execa('node', [
+    path.join(__dirname, '../cli.js'),
+    fixture('script-args.ts'),
+    'a',
+    '--foo',
+    'b',
+    '--bar',
+    'c',
+    '--baz',
+    '3',
+  ])
+  expect(res.stdout).toMatchInlineSnapshot(`
+    "[
+      'a', '--foo',
+      'b', '--bar',
+      'c', '--baz',
+      '3'
+    ]"
+  `)
+})

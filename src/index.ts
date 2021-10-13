@@ -3,18 +3,22 @@ import { bundleRequire } from 'bundle-require'
 import { spawn } from 'cross-spawn'
 import { httpPlugin } from './plugins/http-plugin'
 
+const JS_EXT_RE = /\.(js|jsx|ts|tsx|mjs|cjs)$/
+
 class PrettyError extends Error {}
 
 const parseArgs = (args: string[]) => {
-  const first = args[0]
+  const scriptIndex = args.findIndex((arg) => JS_EXT_RE.test(arg))
+  const script = scriptIndex === -1 ? undefined : args[scriptIndex]
   const showNodeHelp = args.includes('--help') || args.includes('-h')
-
-  const file = first && first[0] !== '-' ? first : undefined
+  const nodeArgs = args.slice(0, scriptIndex)
+  const scriptArgs = args.slice(scriptIndex + 1)
 
   return {
-    file,
+    script,
     showNodeHelp,
-    args: file ? args.slice(1) : args,
+    nodeArgs,
+    scriptArgs,
   }
 }
 
@@ -27,10 +31,10 @@ export async function startCLI() {
       return
     }
 
-    if (!cli.file) throw new PrettyError(`No file specified`)
+    if (!cli.script) throw new PrettyError(`No file specified`)
 
     await bundleRequire({
-      filepath: cli.file,
+      filepath: cli.script,
       esbuildOptions: {
         sourcemap: 'inline',
       },
@@ -50,8 +54,9 @@ export async function startCLI() {
             [
               '-r',
               path.join(__dirname, 'source-map-support-inject.js'),
+              ...cli.nodeArgs,
               outfile,
-              ...cli.args,
+              ...cli.scriptArgs,
             ],
             {
               stdio: 'inherit',
