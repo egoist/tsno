@@ -1,3 +1,4 @@
+import path from 'path'
 import { bundleRequire } from 'bundle-require'
 import { spawn } from 'cross-spawn'
 import { httpPlugin } from './plugins/http-plugin'
@@ -30,6 +31,9 @@ export async function startCLI() {
 
     await bundleRequire({
       filepath: cli.file,
+      esbuildOptions: {
+        sourcemap: 'inline',
+      },
       getOutputFile(filepath) {
         filepath = filepath.replace(/\.[a-z]+$/, '.tsno.cjs')
         // Prevent esbuild from emitting nested folders when the input is an URL
@@ -41,10 +45,19 @@ export async function startCLI() {
       esbuildPlugins: [httpPlugin()],
       require: (outfile) =>
         new Promise((resolve) => {
-          const cmd = spawn('node', [outfile, ...cli.args], {
-            stdio: 'inherit',
-            env: process.env,
-          })
+          const cmd = spawn(
+            'node',
+            [
+              '-r',
+              path.join(__dirname, 'source-map-support-inject.js'),
+              ...cli.args,
+              outfile,
+            ],
+            {
+              stdio: 'inherit',
+              env: process.env,
+            },
+          )
           cmd.stdout?.pipe(process.stdout)
           cmd.stderr?.pipe(process.stdout)
           cmd.stdin?.pipe(process.stdout)
