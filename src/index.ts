@@ -63,13 +63,14 @@ export async function startCLI() {
             ],
             {
               stdio: 'inherit',
-              env: process.env,
             },
           )
-          cmd.stdout?.pipe(process.stdout)
-          cmd.stderr?.pipe(process.stdout)
-          cmd.stdin?.pipe(process.stdout)
-          cmd.on('exit', resolve)
+          cmd.on('exit', (code) => {
+            if (code != null) {
+              process.exitCode = code
+            }
+            resolve(true)
+          })
         }),
     })
   } catch (error) {
