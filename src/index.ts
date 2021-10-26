@@ -1,4 +1,6 @@
+import os from 'os'
 import path from 'path'
+import fs from 'fs'
 import { bundleRequire } from 'bundle-require'
 import { spawn } from 'cross-spawn'
 import { httpPlugin } from './plugins/http-plugin'
@@ -13,16 +15,29 @@ const parseArgs = (args: string[]) => {
     (arg) => JS_EXT_RE.test(arg) || URL_RE.test(arg),
   )
   const script = scriptIndex === -1 ? undefined : args[scriptIndex]
+  const evalIndex = args.findIndex((arg) => arg === '-e')
+  const evalCode = evalIndex === -1 ? undefined : args[evalIndex + 1]
   const nodeArgs = args.slice(0, scriptIndex)
   const scriptArgs = args.slice(scriptIndex + 1)
   const showNodeHelp = nodeArgs.includes('--help') || nodeArgs.includes('-h')
+
+  if (evalCode) {
+    nodeArgs.splice(evalIndex, 2)
+  }
 
   return {
     script,
     showNodeHelp,
     nodeArgs,
     scriptArgs,
+    evalCode,
   }
+}
+
+const createTemplateScript = (code: string) => {
+  const p = path.join(os.tmpdir(), `tsno-${Date.now()}.tsx`)
+  fs.writeFileSync(p, code, 'utf8')
+  return p
 }
 
 export async function startCLI() {
@@ -34,10 +49,14 @@ export async function startCLI() {
       return
     }
 
-    if (!cli.script) throw new PrettyError(`No file specified`)
+    if (!cli.script && !cli.evalCode) throw new PrettyError(`No file specified`)
+
+    const filepath = cli.evalCode
+      ? createTemplateScript(cli.evalCode)
+      : cli.script!
 
     await bundleRequire({
-      filepath: cli.script,
+      filepath,
       esbuildOptions: {
         sourcemap: 'inline',
       },
