@@ -13,9 +13,9 @@ const parseArgs = (args: string[]) => {
     (arg) => JS_EXT_RE.test(arg) || URL_RE.test(arg),
   )
   const script = scriptIndex === -1 ? undefined : args[scriptIndex]
-  const showNodeHelp = args.includes('--help') || args.includes('-h')
   const nodeArgs = args.slice(0, scriptIndex)
   const scriptArgs = args.slice(scriptIndex + 1)
+  const showNodeHelp = nodeArgs.includes('--help') || nodeArgs.includes('-h')
 
   return {
     script,
