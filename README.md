@@ -40,6 +40,10 @@ tsno https://egoist.sh/tsno.ts
 
 You can also use `import` or `require` to load modules from an URL.
 
+## Sponsors
+
+[![sponsors](https://sponsors-images.egoist.sh/sponsors.svg)](https://github.com/sponsors/egoist)
+
 ## License
 
 MIT &copy; [EGOIST](https://github.com/sponsors/egoist)
