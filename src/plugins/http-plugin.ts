@@ -1,6 +1,7 @@
 import path from 'path'
 import { builtinModules } from 'module'
 import { Plugin, Loader } from 'esbuild'
+import colors from 'picocolors'
 
 const URL_RE = /^https?:\/\//
 
@@ -57,7 +58,7 @@ export const httpPlugin = (): Plugin => {
       // handle the example import from unpkg.com but in reality this
       // would probably need to be more complex.
       build.onLoad({ filter: /.*/, namespace: 'http-url' }, async (args) => {
-        console.log(`Fetching`, args.path)
+        console.log(colors.green(`Download`), args.path)
         const res = await axios.default({
           url: args.path,
           // Disable JSON parsing so we can get the raw response body.

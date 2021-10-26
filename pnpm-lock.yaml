@@ -12,6 +12,7 @@ specifiers:
   execa: ^5.1.1
   jest: ^26.6.3
   minimost: ^1.2.0
+  picocolors: ^1.0.0
   prettier: ^2.2.1
   source-map-support: ^0.5.20
   tsup: ^5.4.0
@@ -31,6 +32,7 @@ devDependencies:
   execa: 5.1.1
   jest: 26.6.3
   minimost: 1.2.0
+  picocolors: 1.0.0
   prettier: 2.4.1
   source-map-support: 0.5.20
   tsup: 5.4.0_typescript@4.4.3
@@ -3126,6 +3128,10 @@ packages:
 
   /picocolors/0.2.1:
     resolution: {integrity: sha512-cMlDqaLEqfSaW8Z7N5Jw+lyIW869EzT73/F5lhtY9cLGoVxSXznfgfXMO0Z5K0o0Q2TkTXq+0KFsdnSe3jDViA==}
+    dev: true
+
+  /picocolors/1.0.0:
+    resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==}
     dev: true
 
   /picomatch/2.3.0:
