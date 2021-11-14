@@ -34,3 +34,11 @@ test('script args', async () => {
     ]"
   `)
 })
+
+test('import esm package', async () => {
+  const res = await execa('node', [
+    path.join(__dirname, '../cli.js'),
+    fixture('import-esm-package/index.ts'),
+  ])
+  expect(res.stdout).toMatchInlineSnapshot(`"foo"`)
+})

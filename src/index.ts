@@ -59,6 +59,7 @@ export async function startCLI() {
       filepath,
       esbuildOptions: {
         sourcemap: 'inline',
+        plugins: [httpPlugin()],
       },
       getOutputFile(filepath) {
         filepath = filepath.replace(/\.[a-z]+$/, '.tsno.cjs')
@@ -68,7 +69,6 @@ export async function startCLI() {
         }
         return filepath
       },
-      esbuildPlugins: [httpPlugin()],
       require: (outfile) =>
         new Promise((resolve) => {
           const cmd = spawn(
