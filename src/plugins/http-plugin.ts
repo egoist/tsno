@@ -1,7 +1,7 @@
 import path from 'path'
 import { builtinModules } from 'module'
 import { Plugin, Loader } from 'esbuild'
-import colors from 'picocolors'
+import { colors } from '../colors'
 
 const URL_RE = /^https?:\/\//
 
@@ -32,9 +32,11 @@ export const httpPlugin = (): Plugin => {
       // the newly resolved URL in the "http-url" namespace so imports
       // inside it will also be resolved as URLs recursively.
       build.onResolve({ filter: /.*/, namespace: 'http-url' }, (args) => {
-        const isBuiltinModule = builtinModules.some(
-          (name) => args.path === name || args.path.startsWith(`${name}/`),
-        )
+        const isBuiltinModule =
+          args.path.startsWith('node:') ||
+          builtinModules.some(
+            (name) => args.path === name || args.path.startsWith(`${name}/`),
+          )
         if (isBuiltinModule) {
           return {
             path: args.path,

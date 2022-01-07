@@ -10,7 +10,10 @@
 
 - Super duper fast
 - TypeScript support
-- Deno-style URL import, try `npx tsno https://egoist.sh/tsno.ts`
+- Polyfills for common utilities like `fetch`, `axios` and `colors`
+- Provide an easy way to run shell scripts
+- Top-level await support (Node.js >= v14.8)
+- Deno-style URL import, try `npx tsno run https://egoist.sh/tsno.ts` (experimental)
 
 ## Install
 
@@ -23,22 +26,38 @@ npm i tsno -g
 ## Usage
 
 ```bash
-tsno script.ts
+tsno run script.ts
 ```
 
 Supported files: `.js` `.jsx` `.ts` `.tsx` `.cjs` `.mjs` `.json`
-
-All `node` flags are forwarded, i.e. `tsno --experimental-wasm-modules script.ts` works as expected.
 
 ### Importing from URL
 
 tsno supports deno-style http import, try:
 
 ```bash
-tsno https://egoist.sh/tsno.ts
+tsno run https://egoist.sh/tsno.ts
 ```
 
 You can also use `import` or `require` to load modules from an URL.
+
+### Use with `google/zx`
+
+Install `zx` alongside `tsno`:
+
+```bash
+npm i tsno zx -D
+```
+
+Then you can import `zx` in your script:
+
+```ts
+import { $ } from 'zx'
+
+$`echo "some fancy shell script!"`
+```
+
+Now you can run `tsno run your-script.ts`.
 
 ## Sponsors
 
