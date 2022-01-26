@@ -3,7 +3,7 @@ lockfileVersion: 5.3
 specifiers:
   '@egoist/prettier-config': 1.0.0
   axios: 0.22.0
-  bundle-require: 2.2.0
+  bundle-require: 2.3.0
   esbuild: ^0.14.10
   execa: 6.0.0
   minimost: 1.2.0
@@ -23,7 +23,7 @@ dependencies:
 devDependencies:
   '@egoist/prettier-config': 1.0.0
   axios: 0.22.0
-  bundle-require: 2.2.0_esbuild@0.14.10
+  bundle-require: 2.3.0_esbuild@0.14.10
   execa: 6.0.0
   minimost: 1.2.0
   node-fetch: 3.1.0
@@ -167,8 +167,8 @@ packages:
       fill-range: 7.0.1
     dev: true
 
-  /bundle-require/2.2.0_esbuild@0.14.10:
-    resolution: {integrity: sha512-JDVxYEAxEX1g8AWtadiIkCkFf42RulEl5AOIvUa4cpuEL/VKpK2lJwogyswHnp+qizNQxM0Ylamw7CjPRaJZuA==}
+  /bundle-require/2.3.0_esbuild@0.14.10:
+    resolution: {integrity: sha512-kH8vyERJv0Td4Odu2KQyooYyeXDx2FbhGwSfkEGdyHmkTCahvwVI8w/pE2stbsp6G/W5/3kIC7ErdBg/30OAkw==}
     peerDependencies:
       esbuild: '>=0.13'
     dependencies:
@@ -1328,7 +1328,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      bundle-require: 2.2.0_esbuild@0.14.10
+      bundle-require: 2.3.0_esbuild@0.14.10
       cac: 6.7.12
       chokidar: 3.5.2
       debug: 4.3.2
