@@ -3,7 +3,7 @@ lockfileVersion: 5.3
 specifiers:
   '@egoist/prettier-config': 1.0.0
   axios: 0.22.0
-  bundle-require: 2.2.0
+  bundle-require: 3.0.4
   esbuild: ^0.14.10
   execa: 6.0.0
   minimost: 1.2.0
@@ -23,7 +23,7 @@ dependencies:
 devDependencies:
   '@egoist/prettier-config': 1.0.0
   axios: 0.22.0
-  bundle-require: 2.2.0_esbuild@0.14.10
+  bundle-require: 3.0.4_esbuild@0.14.10
   execa: 6.0.0
   minimost: 1.2.0
   node-fetch: 3.1.0
@@ -173,6 +173,16 @@ packages:
       esbuild: '>=0.13'
     dependencies:
       esbuild: 0.14.10
+    dev: true
+
+  /bundle-require/3.0.4_esbuild@0.14.10:
+    resolution: {integrity: sha512-VXG6epB1yrLAvWVQpl92qF347/UXmncQj7J3U8kZEbdVZ1ZkQyr4hYeL/9RvcE8vVVdp53dY78Fd/3pqfRqI1A==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+    peerDependencies:
+      esbuild: '>=0.13'
+    dependencies:
+      esbuild: 0.14.10
+      load-tsconfig: 0.2.2
     dev: true
 
   /cac/6.7.12:
@@ -904,6 +914,11 @@ packages:
 
   /lines-and-columns/1.1.6:
     resolution: {integrity: sha1-HADHQ7QzzQpOgHWPe2SldEDZ/wA=}
+    dev: true
+
+  /load-tsconfig/0.2.2:
+    resolution: {integrity: sha512-9B4XOMjNhphRmXg3YHFnpgEH5fmYKofXJ7M6sLkRcfJ5DcuPiStlQ1Or+1Rv/aML716kQ9Q+C9zJGUcfMYiq4Q==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dev: true
 
   /local-pkg/0.4.1:
