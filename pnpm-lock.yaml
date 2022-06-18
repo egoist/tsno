@@ -8,7 +8,7 @@ specifiers:
   execa: 6.0.0
   minimost: 1.2.0
   node-fetch: 3.1.0
-  prettier: 2.5.1
+  prettier: 2.7.1
   string-argv: 0.3.1
   strip-ansi: 7.0.1
   tinyargs: 0.1.4
@@ -27,7 +27,7 @@ devDependencies:
   execa: 6.0.0
   minimost: 1.2.0
   node-fetch: 3.1.0
-  prettier: 2.5.1
+  prettier: 2.7.1
   string-argv: 0.3.1
   strip-ansi: 7.0.1
   tinyargs: 0.1.4
@@ -1121,8 +1121,8 @@ packages:
       source-map-js: 1.0.1
     dev: true
 
-  /prettier/2.5.1:
-    resolution: {integrity: sha512-vBZcPRUR5MZJwoyi3ZoyQlc1rXeEck8KgeC9AwwOn+exuxLxq5toTRDTSaVrXHxelDMHy9zlicw8u66yxoSUFg==}
+  /prettier/2.7.1:
+    resolution: {integrity: sha512-ujppO+MkdPqoVINuDFDRLClm7D78qbDt0/NR+wp5FqEZOoTNAjPHWj17QRhu7geIHJfcNhRk1XVQmF8Bp3ye+g==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     dev: true
