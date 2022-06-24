@@ -28,7 +28,7 @@
     "bundle-require": "2.2.0",
     "execa": "6.0.0",
     "minimost": "1.2.0",
-    "node-fetch": "3.1.0",
+    "node-fetch": "3.1.1",
     "prettier": "2.5.1",
     "string-argv": "0.3.1",
     "strip-ansi": "7.0.1",
